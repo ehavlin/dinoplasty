@@ -1,5 +1,6 @@
 const app = {
     init(selectors){
+        this.dinos = []
         this.max = 0
         this.list = document.querySelector(selectors.listSelector)
         document
@@ -16,6 +17,8 @@ const app = {
 
         const listItem = this.renderListItem(dino)
         this.list.appendChild(listItem)
+
+        // TODO: Add the dino to this.dinos
 
         ++ this.max
     },
