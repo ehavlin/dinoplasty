@@ -25,6 +25,15 @@ const app = {
     deleteEntry(event) {
         const listItem = event.target.closest('.dino')
         listItem.remove()
+
+        for (let i = 0; i < this.dinos.length; i++){
+            const currentId = this.dinos[i].id.toString()
+            if (listItem.dataset.id === currentId) {
+                this.dinos.splice(i, 1)
+                break;
+            }
+        }
+       // this.dinos.splice(, 1)
     },
 
     moveUp(event){
@@ -62,8 +71,8 @@ const app = {
         item.classList.remove('template')
         item.dataset.id = dino.id
         item.querySelector('.dino-name').textContent = dino.name
+        item.querySelector('button.remove').addEventListener('click', this.deleteEntry.bind(this))
 
-        item.querySelector('button.remove').addEventListener('click', this.deleteEntry)
         return item
     },
 
