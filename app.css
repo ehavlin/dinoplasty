@@ -2,6 +2,10 @@
     display: none;
 }
 
+.actions {
+    float: right;
+}
+
 #favoriteButton, #deleteButton, #favoriteButtonClicked {
     padding: 10px 15px;
     text-align: center;

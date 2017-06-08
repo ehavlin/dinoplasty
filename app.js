@@ -23,8 +23,8 @@ const app = {
     },
 
     deleteEntry(event) {
-        const button = event.target.parentElement
-        button.outerHTML = ''
+        const listItem = event.target.closest('.dino')
+        listItem.remove()
     },
 
     moveUp(event){
@@ -52,12 +52,6 @@ const app = {
 
             this.dinos.unshift(dino)
 
-            // const buttons = listItem.childNodes
-            // buttons[1].addEventListener('click', this.deleteEntry)
-            // buttons[2].addEventListener('click', this.markFavorite)
-            // buttons[3].addEventListener('click', this.moveDown)
-            // buttons[4].addEventListener('click', this.moveUp)
-
             ++ this.max
 
             event.target.reset()
@@ -68,35 +62,11 @@ const app = {
         item.classList.remove('template')
         item.dataset.id = dino.id
         item.querySelector('.dino-name').textContent = dino.name
-        
-        // const delBtn = document.createElement('input')
-        // delBtn.type = 'button'
-        // delBtn.id = 'deleteButton'
-        // delBtn.value = 'Delete'
-        // li.appendChild(delBtn)
 
-        // const favBtn = document.createElement('input')
-        // favBtn.type = 'button'
-        // favBtn.id = 'favoriteButton'
-        // favBtn.value = 'Favorite'
-        // li.appendChild(favBtn)
-
-        // const downBtn = document.createElement('input')
-        // downBtn.type = 'button'
-        // downBtn.id = 'downButton'
-        // downBtn. value = 'Down'
-        // li.appendChild(downBtn)
-
-        // const upBtn = document.createElement('input')
-        // upBtn.type = 'button'
-        // upBtn.id = 'upButton' 
-        // upBtn. value = 'Up'
-        // li.appendChild(upBtn)
-
-
-
+        item.querySelector('button.remove').addEventListener('click', this.deleteEntry)
         return item
     },
+
 }
 
 app.init({
