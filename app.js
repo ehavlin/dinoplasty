@@ -25,13 +25,13 @@ const app = {
     },
 
     markFavorite(event){
-        if (event.target.value === 'Unfavorite'){
+        if (event.target.id === 'favoriteButtonClicked'){
             event.target.value = 'Favorite'
             event.target.id = 'favoriteButton'            
         }
         else {
             event.target.value = 'Unfavorite'
-           event.target.id = 'favoriteButtonClicked'            
+            event.target.id = 'favoriteButtonClicked'         
         }  
     },
 
@@ -51,17 +51,21 @@ const app = {
     },
 
     moveUp(event){
-        let listItem = event.target.parentNode
+        let listItem = event.target.parentNode.parentNode
         if (listItem.previousSibling){
             listItem.parentNode.insertBefore(listItem, listItem.previousSibling)
-        }  
+        } 
+
+        this.save()
     },
 
     moveDown(event){
-        let listItem = event.target.parentNode
+        let listItem = event.target.parentNode.parentNode
         if (listItem.nextSibling){
             listItem.parentNode.insertBefore(listItem, listItem.nextSibling.nextSibling)
         } 
+        
+        this.save()
     },
     
     addDino(dino) {
@@ -92,7 +96,9 @@ const app = {
         item.dataset.id = dino.id
         item.querySelector('.dino-name').textContent = dino.name
         item.querySelector('button.remove').addEventListener('click', this.deleteEntry.bind(this))
-        //item.querySelector('button.favorite').addEventListener('click', this.markFavorite)
+        item.querySelector('button.favorite').addEventListener('click', this.markFavorite.bind(this))
+        item.querySelector('button.up').addEventListener('click', this.moveUp.bind(this))
+        item.querySelector('button.down').addEventListener('click', this.moveDown.bind(this))
 
         return item
     },
