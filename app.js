@@ -47,7 +47,7 @@ const app = {
             const listItem = this.renderListItem(dino)
             this.list.appendChild(listItem)
 
-            this.dinos.push(dino.name)
+            this.dinos.push(dino)
 
             const buttons = listItem.childNodes
             buttons[1].addEventListener('click', this.deleteEntry)
