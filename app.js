@@ -24,6 +24,20 @@ const app = {
         button.outerHTML = ''
     },
 
+    moveUp(event){
+        let listItem = event.target.parentNode
+        if (listItem.previousSibling){
+            listItem.parentNode.insertBefore(listItem, listItem.previousSibling)
+        }  
+    },
+
+    moveDown(event){
+        let listItem = event.target.parentNode
+        if (listItem.nextSibling){
+            listItem.parentNode.insertBefore(listItem, listItem.nextSibling.nextSibling)
+        } 
+    },
+
     addDino(event) {
         event.preventDefault()
         const dino = {
@@ -37,8 +51,11 @@ const app = {
         this.dinos.push(dino.name)
 
         const buttons = listItem.childNodes
+        buttons[0].addEventListener('click', this.deleteEntry)
         buttons[1].addEventListener('click', this.deleteEntry)
         buttons[2].addEventListener('click', this.markFavorite)
+        buttons[3].addEventListener('click', this.moveUp)
+        buttons[4].addEventListener('click', this.moveDown)
 
         ++ this.max
     },
@@ -50,12 +67,26 @@ const app = {
         const delBtn = document.createElement('input')
         delBtn.type = 'button'
         delBtn.id = 'deleteButton'
+        delBtn.value = 'Delete'
         li.appendChild(delBtn)
 
         const favBtn = document.createElement('input')
         favBtn.type = 'button'
         favBtn.id = 'favoriteButton'
+        favBtn.value = 'Favorite'
         li.appendChild(favBtn)
+
+        const upBtn = document.createElement('input')
+        upBtn.type = 'button'
+        upBtn.id = 'upButton' 
+        upBtn. value = '^'
+        li.appendChild(upBtn)
+
+        const downBtn = document.createElement('input')
+        downBtn.type = 'button'
+        downBtn.id = 'downButton'
+        downBtn. value = 'V'
+        li.appendChild(downBtn)
 
         return li
     },
