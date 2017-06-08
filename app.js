@@ -24,13 +24,15 @@ const app = {
         localStorage.setItem('dinos', JSON.stringify(this.dinos))
     },
 
-    markFavorite(event){
+    markFavorite(dino, event){
         const btn = event.target
 
         if (btn.textContent === 'Unfavorite') {
+            dino.favorite = false
             btn.textContent = 'Favorite'
         }
         else {
+            dino.favorite = true
             btn.textContent = 'Unfavorite'
         }
 
@@ -97,8 +99,14 @@ const app = {
         this.dinos.unshift(dino)
 
         this.save()
+        
+        if (dino.favorite) {
+            const favBtn = listItem.querySelector('.fav')
+            favBtn.textContent = "Unfavorite"   
+        }
 
-        ++ this.max
+        if (dino.id > this.max)
+            this.max = dino.id
     },
 
     addDinoFromForm(event) {
@@ -106,6 +114,7 @@ const app = {
         const dino = {
             id: this.max + 1,
             name: event.target.dinoName.value,
+            favorite: false,
         }
            
         this.addDino(dino)
@@ -119,7 +128,7 @@ const app = {
         item.dataset.id = dino.id
         item.querySelector('.dino-name').textContent = dino.name
         item.querySelector('button.remove').addEventListener('click', this.deleteEntry.bind(this))
-        item.querySelector('button.fav').addEventListener('click', this.markFavorite.bind(this))
+        item.querySelector('button.fav').addEventListener('click', this.markFavorite.bind(this, dino))
         item.querySelector('button.up').addEventListener('click', this.moveUp.bind(this, dino))
         item.querySelector('button.down').addEventListener('click', this.moveDown.bind(this, dino))
         item.querySelector('button.edit').addEventListener('click', this.editEntry.bind(this, dino))
