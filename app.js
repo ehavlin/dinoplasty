@@ -63,9 +63,11 @@ const app = {
             event.target.reset()
     },
 
-    renderListItem(dino) {
-        const li = document.createElement('li')
-        li.textContent = dino.name
+    renderListItem(dino) {     
+        const item = this.template.cloneNode(true)
+        item.classList.remove('template')
+        item.dataset.id = dino.id
+        item.querySelector('.dino-name').textContent = dino.name
         
         // const delBtn = document.createElement('input')
         // delBtn.type = 'button'
@@ -91,9 +93,9 @@ const app = {
         // upBtn. value = 'Up'
         // li.appendChild(upBtn)
 
-        li.dataset.id = dino.id
 
-        return li
+
+        return item
     },
 }
 
