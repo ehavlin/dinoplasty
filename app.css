@@ -1,12 +1,16 @@
-#favoriteButton {
-    background-color: white; 
-    color: black; 
-    border: 2px solid gold;
-    padding: 5px 7px;
+#favoriteButton, #deleteButton, #favoriteButtonClicked {
+    padding: 10px 15px;
     text-align: center;
     text-decoration: none;
     font-size: 12px;
     transition-duration: 0.4s;
+    float: right;
+}
+
+#favoriteButton {
+    background-color: white; 
+    color: black; 
+    border: 2px solid gold;
 }
 
 #favoriteButton:hover {
@@ -18,11 +22,6 @@
     background-color: gold; 
     color: white; 
     border: 2px solid gold;
-    padding: 5px 7px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 12px;
-    transition-duration: 0.4s;
 }
 
 #favoriteButtonClicked:hover {
@@ -34,12 +33,6 @@
     background-color: darkred; 
     border: 2px solid darkred;
     color:white;
-    padding: 5px 7px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 12px;
-    border-radius: 6px;
-    transition-duration: 0.4s;
 }
 
 #deleteButton:hover{
@@ -47,3 +40,20 @@
     color: black;
     border: 2px solid darkred;
 } 
+
+#upButton, #downButton {
+    float: right;
+}
+
+li {
+    border: 2px solid black;
+    padding: 1rem 5px
+}
+
+li:nth-of-type(odd){
+    background-color: whitesmoke
+}
+
+li:nth-of-type(even) {
+    background-color: lightgreen;
+}

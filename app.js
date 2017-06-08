@@ -45,19 +45,24 @@ const app = {
             name: event.target.dinoName.value,
         }
 
-        const listItem = this.renderListItem(dino)
-        this.list.appendChild(listItem)
+        if(dino.name === '') 
+            alert('The input box cannot be empty')
+        else if (dino.name.substring(0, 1) === ' ')
+            alert('There cannot be a space at the start of the dinosaur name')
+        else {
+            const listItem = this.renderListItem(dino)
+            this.list.appendChild(listItem)
 
-        this.dinos.push(dino.name)
+            this.dinos.push(dino.name)
 
-        const buttons = listItem.childNodes
-        buttons[0].addEventListener('click', this.deleteEntry)
-        buttons[1].addEventListener('click', this.deleteEntry)
-        buttons[2].addEventListener('click', this.markFavorite)
-        buttons[3].addEventListener('click', this.moveUp)
-        buttons[4].addEventListener('click', this.moveDown)
+            const buttons = listItem.childNodes
+            buttons[1].addEventListener('click', this.deleteEntry)
+            buttons[2].addEventListener('click', this.markFavorite)
+            buttons[3].addEventListener('click', this.moveDown)
+            buttons[4].addEventListener('click', this.moveUp)
 
-        ++ this.max
+            ++ this.max
+        }
     },
 
     renderListItem(dino) {
@@ -76,17 +81,17 @@ const app = {
         favBtn.value = 'Favorite'
         li.appendChild(favBtn)
 
-        const upBtn = document.createElement('input')
-        upBtn.type = 'button'
-        upBtn.id = 'upButton' 
-        upBtn. value = '^'
-        li.appendChild(upBtn)
-
         const downBtn = document.createElement('input')
         downBtn.type = 'button'
         downBtn.id = 'downButton'
         downBtn. value = 'V'
         li.appendChild(downBtn)
+
+        const upBtn = document.createElement('input')
+        upBtn.type = 'button'
+        upBtn.id = 'upButton' 
+        upBtn. value = '^'
+        li.appendChild(upBtn)
 
         return li
     },
