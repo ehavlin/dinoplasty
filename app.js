@@ -8,7 +8,16 @@ const app = {
             .querySelector(selectors.templateSelector)
         document
             .querySelector(selectors.formSelector)
-            .addEventListener('submit', this.addDino.bind(this))
+            .addEventListener('submit', this.addDinoFromForm.bind(this))           
+        this.load()
+    },
+
+    load() {
+        const dinoJSON = localStorage.getItem('dinos')
+        const dinoArray = JSON.parse(dinoJSON)
+        if (dinoArray){
+            dinoArray.reverse().map(this.addDino.bind(this))
+        }  
     },
 
     save() {
@@ -54,22 +63,27 @@ const app = {
             listItem.parentNode.insertBefore(listItem, listItem.nextSibling.nextSibling)
         } 
     },
+    
+    addDino(dino) {
+        const listItem = this.renderListItem(dino)
+        this.list.insertBefore(listItem, this.list.firstChild)
 
-    addDino(event) {
+        this.dinos.unshift(dino)
+        this.save()
+
+        ++ this.max
+    },
+
+    addDinoFromForm(event) {
         event.preventDefault()
         const dino = {
             id: this.max + 1,
             name: event.target.dinoName.value,
         }
-            const listItem = this.renderListItem(dino)
-            this.list.insertBefore(listItem, this.list.firstChild)
+           
+        this.addDino(dino)
 
-            this.dinos.unshift(dino)
-            this.save()
-
-            ++ this.max
-
-            event.target.reset()
+        event.target.reset()
     },
 
     renderListItem(dino) {     
@@ -78,7 +92,7 @@ const app = {
         item.dataset.id = dino.id
         item.querySelector('.dino-name').textContent = dino.name
         item.querySelector('button.remove').addEventListener('click', this.deleteEntry.bind(this))
-        item.querySelector('button.favorite').addEventListener('click', this.markFavorite)
+        //item.querySelector('button.favorite').addEventListener('click', this.markFavorite)
 
         return item
     },
