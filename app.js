@@ -84,13 +84,13 @@ const app = {
         const downBtn = document.createElement('input')
         downBtn.type = 'button'
         downBtn.id = 'downButton'
-        downBtn. value = 'V'
+        downBtn. value = 'Down'
         li.appendChild(downBtn)
 
         const upBtn = document.createElement('input')
         upBtn.type = 'button'
         upBtn.id = 'upButton' 
-        upBtn. value = '^'
+        upBtn. value = 'Up'
         li.appendChild(upBtn)
 
         return li

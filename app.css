@@ -14,7 +14,7 @@
 }
 
 #favoriteButton:hover {
-    background-color: gold; /* Green */
+    background-color: gold; 
     color: white;
 }
 
@@ -42,7 +42,25 @@
 } 
 
 #upButton, #downButton {
+    background-color: lightgray; 
+    color: black; 
+    border: 2px solid lightgray;
+    padding: 7px 7px;
+    text-align: center;
     float: right;
+    transition-duration: 0.4s
+}
+
+#upButton {
+    font-size: 12px;
+}
+
+#downButton {
+    font-size: 12px;
+}
+
+#upButton:hover, #downButton:hover {
+    background-color: white;
 }
 
 li {
@@ -56,4 +74,12 @@ li:nth-of-type(odd){
 
 li:nth-of-type(even) {
     background-color: lightgreen;
+}
+
+h1 {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+span {
+    font-family: Arial, Helvetica, sans-serif;
 }
