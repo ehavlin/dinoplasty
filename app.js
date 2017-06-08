@@ -44,12 +44,6 @@ const app = {
             id: this.max + 1,
             name: event.target.dinoName.value,
         }
-
-        if(dino.name === '') 
-            alert('The input box cannot be empty')
-        else if (dino.name.substring(0, 1) === ' ')
-            alert('There cannot be a space at the start of the dinosaur name')
-        else {
             const listItem = this.renderListItem(dino)
             this.list.appendChild(listItem)
 
@@ -62,7 +56,8 @@ const app = {
             buttons[4].addEventListener('click', this.moveUp)
 
             ++ this.max
-        }
+
+            event.target.reset()
     },
 
     renderListItem(dino) {
