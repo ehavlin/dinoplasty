@@ -2,7 +2,10 @@ const app = {
     init(selectors){
         this.dinos = []
         this.max = 0
-        this.list = document.querySelector(selectors.listSelector)
+        this.list = document
+            .querySelector(selectors.listSelector)
+        this.template = document
+            .querySelector(selectors.templateSelector)
         document
             .querySelector(selectors.formSelector)
             .addEventListener('submit', this.addDino.bind(this))
@@ -49,11 +52,11 @@ const app = {
 
             this.dinos.unshift(dino)
 
-            const buttons = listItem.childNodes
-            buttons[1].addEventListener('click', this.deleteEntry)
-            buttons[2].addEventListener('click', this.markFavorite)
-            buttons[3].addEventListener('click', this.moveDown)
-            buttons[4].addEventListener('click', this.moveUp)
+            // const buttons = listItem.childNodes
+            // buttons[1].addEventListener('click', this.deleteEntry)
+            // buttons[2].addEventListener('click', this.markFavorite)
+            // buttons[3].addEventListener('click', this.moveDown)
+            // buttons[4].addEventListener('click', this.moveUp)
 
             ++ this.max
 
@@ -64,29 +67,29 @@ const app = {
         const li = document.createElement('li')
         li.textContent = dino.name
         
-        const delBtn = document.createElement('input')
-        delBtn.type = 'button'
-        delBtn.id = 'deleteButton'
-        delBtn.value = 'Delete'
-        li.appendChild(delBtn)
+        // const delBtn = document.createElement('input')
+        // delBtn.type = 'button'
+        // delBtn.id = 'deleteButton'
+        // delBtn.value = 'Delete'
+        // li.appendChild(delBtn)
 
-        const favBtn = document.createElement('input')
-        favBtn.type = 'button'
-        favBtn.id = 'favoriteButton'
-        favBtn.value = 'Favorite'
-        li.appendChild(favBtn)
+        // const favBtn = document.createElement('input')
+        // favBtn.type = 'button'
+        // favBtn.id = 'favoriteButton'
+        // favBtn.value = 'Favorite'
+        // li.appendChild(favBtn)
 
-        const downBtn = document.createElement('input')
-        downBtn.type = 'button'
-        downBtn.id = 'downButton'
-        downBtn. value = 'Down'
-        li.appendChild(downBtn)
+        // const downBtn = document.createElement('input')
+        // downBtn.type = 'button'
+        // downBtn.id = 'downButton'
+        // downBtn. value = 'Down'
+        // li.appendChild(downBtn)
 
-        const upBtn = document.createElement('input')
-        upBtn.type = 'button'
-        upBtn.id = 'upButton' 
-        upBtn. value = 'Up'
-        li.appendChild(upBtn)
+        // const upBtn = document.createElement('input')
+        // upBtn.type = 'button'
+        // upBtn.id = 'upButton' 
+        // upBtn. value = 'Up'
+        // li.appendChild(upBtn)
 
         li.dataset.id = dino.id
 
@@ -97,4 +100,5 @@ const app = {
 app.init({
     formSelector: '#dino-form',
     listSelector: '#dino-list',
+    templateSelector: '.dino.template',
 })
