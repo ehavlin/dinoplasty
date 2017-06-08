@@ -47,7 +47,7 @@ const app = {
             const listItem = this.renderListItem(dino)
             this.list.insertBefore(listItem, this.list.firstChild)
 
-            this.dinos.push(dino)
+            this.dinos.unshift(dino)
 
             const buttons = listItem.childNodes
             buttons[1].addEventListener('click', this.deleteEntry)
