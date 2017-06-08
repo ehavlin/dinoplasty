@@ -88,6 +88,8 @@ const app = {
         upBtn. value = 'Up'
         li.appendChild(upBtn)
 
+        li.dataset.id = dino.id
+
         return li
     },
 }
