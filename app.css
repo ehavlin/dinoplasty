@@ -6,6 +6,10 @@
     float: right;
 }
 
+.dino {
+    clear: both;
+}
+
 #favoriteButton, #deleteButton, #favoriteButtonClicked {
     padding: 10px 15px;
     text-align: center;

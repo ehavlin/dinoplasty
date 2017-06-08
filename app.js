@@ -11,6 +11,10 @@ const app = {
             .addEventListener('submit', this.addDino.bind(this))
     },
 
+    save() {
+        localStorage.setItem('dinos', JSON.stringify(this.dinos))
+    },
+
     markFavorite(event){
         if (event.target.value === 'Unfavorite'){
             event.target.value = 'Favorite'
@@ -18,7 +22,7 @@ const app = {
         }
         else {
             event.target.value = 'Unfavorite'
-            event.target.id = 'favoriteButtonClicked'            
+           event.target.id = 'favoriteButtonClicked'            
         }  
     },
 
@@ -33,7 +37,8 @@ const app = {
                 break;
             }
         }
-       // this.dinos.splice(, 1)
+
+        this.save()
     },
 
     moveUp(event){
@@ -60,6 +65,7 @@ const app = {
             this.list.insertBefore(listItem, this.list.firstChild)
 
             this.dinos.unshift(dino)
+            this.save()
 
             ++ this.max
 
@@ -72,6 +78,7 @@ const app = {
         item.dataset.id = dino.id
         item.querySelector('.dino-name').textContent = dino.name
         item.querySelector('button.remove').addEventListener('click', this.deleteEntry.bind(this))
+        item.querySelector('button.favorite').addEventListener('click', this.markFavorite)
 
         return item
     },
