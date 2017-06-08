@@ -25,14 +25,16 @@ const app = {
     },
 
     markFavorite(event){
-        if (event.target.id === 'favoriteButtonClicked'){
-            event.target.value = 'Favorite'
-            event.target.id = 'favoriteButton'            
+        const btn = event.target
+
+        if (btn.textContent === 'Unfavorite') {
+            btn.textContent = 'Favorite'
         }
         else {
-            event.target.value = 'Unfavorite'
-            event.target.id = 'favoriteButtonClicked'         
-        }  
+            btn.textContent = 'Unfavorite'
+        }
+
+        this.save()
     },
 
     deleteEntry(event) {
@@ -50,20 +52,40 @@ const app = {
         this.save()
     },
 
-    moveUp(event){
+    editEntry() {
+
+    },
+
+    moveUp(dino, event){
         let listItem = event.target.parentNode.parentNode
         if (listItem.previousSibling){
             listItem.parentNode.insertBefore(listItem, listItem.previousSibling)
         } 
 
+        const index = this.dinos.findIndex((currentDino, i) => {
+            return currentDino.id === dino.id
+        })
+
+        const previousDino = this.dinos[index - 1]
+        this.dinos[index - 1] = dino
+        this.dinos[index] = previousDino
+
         this.save()
     },
 
-    moveDown(event){
+    moveDown(dino, event){
         let listItem = event.target.parentNode.parentNode
         if (listItem.nextSibling){
             listItem.parentNode.insertBefore(listItem, listItem.nextSibling.nextSibling)
         } 
+
+        const index = this.dinos.findIndex((currentDino, i) => {
+            return currentDino.id === dino.id
+        })
+
+        const previousDino = this.dinos[index + 1]
+        this.dinos[index + 1] = dino
+        this.dinos[index] = previousDino
         
         this.save()
     },
@@ -73,6 +95,7 @@ const app = {
         this.list.insertBefore(listItem, this.list.firstChild)
 
         this.dinos.unshift(dino)
+
         this.save()
 
         ++ this.max
@@ -96,9 +119,10 @@ const app = {
         item.dataset.id = dino.id
         item.querySelector('.dino-name').textContent = dino.name
         item.querySelector('button.remove').addEventListener('click', this.deleteEntry.bind(this))
-        item.querySelector('button.favorite').addEventListener('click', this.markFavorite.bind(this))
-        item.querySelector('button.up').addEventListener('click', this.moveUp.bind(this))
-        item.querySelector('button.down').addEventListener('click', this.moveDown.bind(this))
+        item.querySelector('button.fav').addEventListener('click', this.markFavorite.bind(this))
+        item.querySelector('button.up').addEventListener('click', this.moveUp.bind(this, dino))
+        item.querySelector('button.down').addEventListener('click', this.moveDown.bind(this, dino))
+        item.querySelector('button.edit').addEventListener('click', this.editEntry.bind(this, dino))
 
         return item
     },
