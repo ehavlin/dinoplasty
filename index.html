@@ -24,6 +24,13 @@
                             autofocus
                             required
                         >
+                        <input 
+                            type="text" 
+                            class="input-group-field"
+                            name="dinoHabit"
+                            placeholder="What is the dinosaur's eating habits? (ex: herbivore)"
+                            required
+                        >
                         <div class="input-group-button">
                             <button 
                                 class="button success" 
@@ -40,12 +47,13 @@
             <div class="medium-8 medium-offset-2 column">
                 <ul id="dino-list" class="no-bullet">
                     <li class="dino template">
-                        <span class="dino-name" contenteditable="true"></span>
+                        <span class="dino-name" contenteditable="false"></span>
+                        <span class="dino-habit" contenteditable="false"></span>
                         <span class="actions button-group">
-                            <button class="fav button">Favorite</button>
+                            <button class="fav button warning">Favorite</button>
                             <button class="remove button alert">Remove</button>
-                            <button class="up button">Up</button>
-                            <button class="down button">Down</button>
+                            <button class="up button secondary">Up</button>
+                            <button class="down button secondary">Down</button>
                             <button class="edit button">Edit</button>
                         </span>
                     </li>

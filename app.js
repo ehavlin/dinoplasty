@@ -54,7 +54,30 @@ const app = {
         this.save()
     },
 
-    editEntry() {
+    editEntry(dino, event) {
+        const item = event.target.closest('.dino')
+        const name = item.querySelector('.dino-name')
+        const habit = item.querySelector('.dino-habit')
+        let btn = item.querySelector('.edit')
+        
+        if (name.isContentEditable){
+            name.contentEditable = false
+            habit.contentEditable = false
+            
+            btn.textContent = 'Edit'
+
+            dino.name = name.textContent
+            dino.eatHabit = habit.textContent
+
+            this.save()
+        }
+        else {
+            name.contentEditable = true
+            habit.contentEditable = true
+
+            btn.textContent = 'Save'
+        }
+
 
     },
 
@@ -115,6 +138,7 @@ const app = {
             id: this.max + 1,
             name: event.target.dinoName.value,
             favorite: false,
+            eatHabit: event.target.dinoHabit.value,
         }
            
         this.addDino(dino)
@@ -127,6 +151,7 @@ const app = {
         item.classList.remove('template')
         item.dataset.id = dino.id
         item.querySelector('.dino-name').textContent = dino.name
+        item.querySelector('.dino-habit').textContent = dino.eatHabit
         item.querySelector('button.remove').addEventListener('click', this.deleteEntry.bind(this))
         item.querySelector('button.fav').addEventListener('click', this.markFavorite.bind(this, dino))
         item.querySelector('button.up').addEventListener('click', this.moveUp.bind(this, dino))
