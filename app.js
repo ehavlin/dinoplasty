@@ -84,9 +84,8 @@ const app = {
     moveUp(dino, event){
         let listItem = event.target.parentNode.parentNode
         if (listItem.previousSibling){
-            listItem.parentNode.insertBefore(listItem, listItem.previousSibling)
-        } 
-
+            listItem.parentNode.insertBefore(listItem, listItem.previousSibling) 
+        
         const index = this.dinos.findIndex((currentDino, i) => {
             return currentDino.id === dino.id
         })
@@ -96,13 +95,13 @@ const app = {
         this.dinos[index] = previousDino
 
         this.save()
+        }
     },
 
     moveDown(dino, event){
         let listItem = event.target.parentNode.parentNode
         if (listItem.nextSibling){
             listItem.parentNode.insertBefore(listItem, listItem.nextSibling.nextSibling)
-        } 
 
         const index = this.dinos.findIndex((currentDino, i) => {
             return currentDino.id === dino.id
@@ -113,6 +112,7 @@ const app = {
         this.dinos[index] = previousDino
         
         this.save()
+        }
     },
     
     addDino(dino) {
