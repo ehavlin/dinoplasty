@@ -58,13 +58,17 @@ const app = {
         const item = event.target.closest('.dino')
         const name = item.querySelector('.dino-name')
         const habit = item.querySelector('.dino-habit')
-        let btn = item.querySelector('.edit')
+
+        const btn = event.currentTarget
+        const icon = btn.querySelector('i.fa')
         
         if (name.isContentEditable){
             name.contentEditable = false
             habit.contentEditable = false
             
-            btn.textContent = 'Edit'
+            icon.classList.remove('fa-check')
+            icon.classList.add('fa-pencil')
+            btn.classList.remove('success')
 
             dino.name = name.textContent
             dino.eatHabit = habit.textContent
@@ -75,7 +79,11 @@ const app = {
             name.contentEditable = true
             habit.contentEditable = true
 
-            btn.textContent = 'Save'
+            icon.classList.remove('fa-pencil')
+            icon.classList.add('fa-check')
+            btn.classList.add('success')
+
+            
         }
     },
 

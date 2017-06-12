@@ -28,11 +28,12 @@
 
 .dino-name {
     flex-grow: 1;
+    margin-right: 1rem;
 }
 
 .dino-habit {
+    flex-grow: 1;
     font-style: italic;
-    padding-left: 2rem;
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
@@ -51,13 +52,16 @@
 
 .dino.fav {
     background-color: gold;
-    border-color: goldenrod;
 }
 
 .dino:first-child .up,
 .dino:last-child .down{
     background-color: lightgray;
     cursor: not-allowed;
+}
+
+.input-group-button .button {
+    color: white;
 }
 
 h1 {
