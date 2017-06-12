@@ -16,69 +16,13 @@
     font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
 }
 
-#favoriteButton, #deleteButton, #favoriteButtonClicked {
-    padding: 10px 15px;
-    text-align: center;
-    text-decoration: none;
-    font-size: 12px;
-    transition-duration: 0.4s;
-    float: right;
+.input-group-field {
+    margin-bottom: 10px;
 }
 
-#favoriteButton {
-    background-color: white; 
-    color: black; 
-    border: 2px solid gold;
-}
-
-#favoriteButton:hover {
-    background-color: gold; 
-    color: white;
-}
-
-#favoriteButtonClicked{
-    background-color: gold; 
-    color: white; 
-    border: 2px solid gold;
-}
-
-#favoriteButtonClicked:hover {
-    background-color: white;
-    color: black;
-}
-
-#deleteButton {
-    background-color: darkred; 
-    border: 2px solid darkred;
-    color:white;
-}
-
-#deleteButton:hover{
-    background-color: white;
-    color: black;
-    border: 2px solid darkred;
-} 
-
-#upButton, #downButton {
-    background-color: lightgray; 
-    color: black; 
-    border: 2px solid lightgray;
-    padding: 7px 7px;
-    text-align: center;
-    float: right;
-    transition-duration: 0.4s
-}
-
-#upButton {
-    font-size: 12px;
-}
-
-#downButton {
-    font-size: 12px;
-}
-
-#upButton:hover, #downButton:hover {
-    background-color: white;
+.input-group-field:hover {
+    border: 2px solid green;
+    transition-duration: 0.5s;
 }
 
 li {
