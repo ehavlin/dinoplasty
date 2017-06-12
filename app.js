@@ -27,22 +27,13 @@ const app = {
     markFavorite(dino, event){
         const listItem = event.target.closest('.dino')
         const btn = event.target
+        dino.favorite = !dino.favorite
 
-        // if (dino.favorite){
-        //     listItem.classList.add('fav')
-        // }
-        // else {
-        //     listItem.classList.remove('fav')
-        // }
-        if (btn.textContent === 'Unfavorite') {
-            listItem.classList.remove('fav')
-            dino.favorite = false
-            btn.textContent = 'Favorite'
+        if (dino.favorite){
+            listItem.classList.add('fav')
         }
         else {
-            listItem.classList.add('fav')
-            dino.favorite = true
-            btn.textContent = 'Unfavorite'
+            listItem.classList.remove('fav')
         }
 
         this.save()
@@ -131,11 +122,6 @@ const app = {
         this.dinos.unshift(dino)
 
         this.save()
-        
-        if (dino.favorite) {
-            const favBtn = listItem.querySelector('.fav')
-            favBtn.textContent = "Unfavorite"   
-        }
 
         if (dino.id > this.max)
             this.max = dino.id
