@@ -54,6 +54,12 @@
     border-color: goldenrod;
 }
 
+.dino:first-child .up,
+.dino:last-child .down{
+    background-color: lightgray;
+    cursor: not-allowed;
+}
+
 h1 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }
