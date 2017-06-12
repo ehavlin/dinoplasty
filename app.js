@@ -92,39 +92,26 @@ const app = {
             const previousDino = this.dinos[index - 1]
             this.dinos[index - 1] = dino
             this.dinos[index] = previousDino
-            
+
             this.save()
         }
-        // let listItem = event.target.parentNode.parentNode
-        // if (listItem.previousSibling){
-        //     listItem.parentNode.insertBefore(listItem, listItem.previousSibling) 
-        
-        // const index = this.dinos.findIndex((currentDino, i) => {
-        //     return currentDino.id === dino.id
-        // })
-
-        // const previousDino = this.dinos[index - 1]
-        // this.dinos[index - 1] = dino
-        // this.dinos[index] = previousDino
-
-        // this.save()
-        // }
     },
 
     moveDown(dino, event){
-        let listItem = event.target.parentNode.parentNode
-        if (listItem.nextSibling){
-            listItem.parentNode.insertBefore(listItem, listItem.nextSibling.nextSibling)
+        const listItem = event.target.closest('.dino')
 
         const index = this.dinos.findIndex((currentDino, i) => {
             return currentDino.id === dino.id
         })
 
-        const previousDino = this.dinos[index + 1]
-        this.dinos[index + 1] = dino
-        this.dinos[index] = previousDino
-        
-        this.save()
+        if (index < this.dinos.length - 1){
+            this.list.insertBefore(listItem.nextElementSibling, listItem)
+
+            const nextDino = this.dinos[index + 1]
+            this.dinos[index + 1] = dino
+            this.dinos[index] = nextDino
+
+            this.save()
         }
     },
     
