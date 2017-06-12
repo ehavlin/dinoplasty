@@ -25,13 +25,16 @@ const app = {
     },
 
     markFavorite(dino, event){
+        const listItem = event.target.closest('.dino')
         const btn = event.target
 
         if (btn.textContent === 'Unfavorite') {
+            listItem.classList.remove('fav')
             dino.favorite = false
             btn.textContent = 'Favorite'
         }
         else {
+            listItem.classList.add('fav')
             dino.favorite = true
             btn.textContent = 'Unfavorite'
         }
@@ -150,6 +153,11 @@ const app = {
         const item = this.template.cloneNode(true)
         item.classList.remove('template')
         item.dataset.id = dino.id
+
+        if (dino.favorite){
+            item.classList.add('fav')
+        }
+        
         item.querySelector('.dino-name').textContent = dino.name
         item.querySelector('.dino-habit').textContent = dino.eatHabit
         item.querySelector('button.remove').addEventListener('click', this.deleteEntry.bind(this))
