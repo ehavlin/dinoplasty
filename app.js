@@ -157,16 +157,21 @@ class App {
 
         if (dino.eatHabit === 'Carnivore'){
             const carn = categories.querySelector('.dino.carnivore')
-            carn.textContent += dino.name + ', '
+            const item = document.createElement('span')
+            item.textContent = dino.name
+            carn.appendChild(item)
         }
         else if (dino.eatHabit === 'Herbivore') {
-            //user inner html to make a <li>
             const herb = categories.querySelector('.dino.herbivore')
-            herb.textContent += dino.name + ', '
+            const item = document.createElement('span')
+            item.textContent = dino.name
+            herb.appendChild(item)
         }
         else if (dino.eatHabit === 'Omnivore') {
             const omni = categories.querySelector('.dino.omnivore')
-            omni.textContent += dino.name + ', '
+            const item = document.createElement('span')
+            item.textContent = dino.name
+            omni.appendChild(item)
         }
     }
 
