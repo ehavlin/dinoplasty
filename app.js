@@ -28,6 +28,12 @@ const app = {
         const listItem = event.target.closest('.dino')
         const btn = event.target
 
+        // if (dino.favorite){
+        //     listItem.classList.add('fav')
+        // }
+        // else {
+        //     listItem.classList.remove('fav')
+        // }
         if (btn.textContent === 'Unfavorite') {
             listItem.classList.remove('fav')
             dino.favorite = false
