@@ -2,13 +2,10 @@ class App {
     constructor(selectors){
         this.dinos = []
         this.max = 0
-        this.list = document
-            .querySelector(selectors.listSelector)
-        this.template = document
-            .querySelector(selectors.templateSelector)
-        document
-            .querySelector(selectors.formSelector)
-            .addEventListener('submit', this.addDinoFromForm.bind(this))           
+        this.list = document.querySelector(selectors.listSelector)
+        this.template = document.querySelector(selectors.templateSelector)
+        document.querySelector(selectors.formSelector).addEventListener('submit', this.addDinoFromForm.bind(this))
+        this.category = document.querySelector(selectors.categorySelector)           
         this.load()
     }
 
@@ -155,6 +152,24 @@ class App {
         event.target.reset()
     }
 
+    categorizeDino(dino){
+        const categories = this.category
+
+        if (dino.eatHabit === 'Carnivore'){
+            const carn = categories.querySelector('.dino.carnivore')
+            carn.textContent += dino.name + ', '
+        }
+        else if (dino.eatHabit === 'Herbivore') {
+            //user inner html to make a <li>
+            const herb = categories.querySelector('.dino.herbivore')
+            herb.textContent += dino.name + ', '
+        }
+        else if (dino.eatHabit === 'Omnivore') {
+            const omni = categories.querySelector('.dino.omnivore')
+            omni.textContent += dino.name + ', '
+        }
+    }
+
     renderListItem(dino) {     
         const item = this.template.cloneNode(true)
         item.classList.remove('template')
@@ -167,7 +182,9 @@ class App {
         if (dino.eatHabit) {
             item.querySelector('.dino-habit').textContent = dino.eatHabit
         }
-        
+
+        this.categorizeDino(dino)
+
         item.querySelector('.dino-name').textContent = dino.name
         item.querySelector('.dino-name').setAttribute('title', dino.name)
         item.querySelector('.dino-name').addEventListener('keypress', this.saveOnEnter.bind(this, dino))
@@ -187,4 +204,5 @@ const app = new App({
     formSelector: '#dino-form',
     listSelector: '#dino-list',
     templateSelector: '.dino.template',
+    categorySelector: '#dino-category',
 })
