@@ -16,7 +16,7 @@
                 <h1><span>Dino</span>plasty</h1>
                 <img src="dino.jpg" alt="Picture of dinosaur" height="300px" width="150px" />
                 <form id="dino-form">
-                    <div class="input-group">
+                    <div class="small-6 column">
                         <input 
                             type="text" 
                             class="input-group-field"
@@ -25,21 +25,23 @@
                             autofocus
                             required
                         >
-                        <input 
-                            type="text" 
-                            class="input-group-field"
-                            name="dinoHabit"
-                            placeholder="What is the dinosaur's eating habits? (ex: herbivore)"
-                            required
+                    </div>
+                    <div class="small-4 column">
+                        <select name="eatHabit">
+                            <option value="">-- Diet --</option>
+                            <option value="Carnivore">Carnivore</option>
+                            <option value="Herbivore">Herbivore</option>
+                            <option value="Omnivore">Omnivore</option>
+                        </select>
+                    </div>
+                    <div class="small-2 column">
+                        <button 
+                            class="button success expanded" 
+                            type="submit"
                         >
-                        <div class="input-group-button">
-                            <button 
-                                class="button success" 
-                                type="submit"
-                            >
-                                <i class="fa fa-plus" aria-hidden="true"></i>
-                            </button>
-                        </div>
+                            Add Dino
+                        </button>
+                    </div>
                     </div>
                 </form>
             </div>

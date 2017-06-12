@@ -147,7 +147,7 @@ class App {
             id: this.max + 1,
             name: event.target.dinoName.value,
             favorite: false,
-            eatHabit: event.target.dinoHabit.value,
+            eatHabit: event.target.eatHabit.value,
         }
            
         this.addDino(dino)
@@ -163,11 +163,14 @@ class App {
         if (dino.favorite){
             item.classList.add('fav')
         }
+
+        if (dino.eatHabit) {
+            item.querySelector('.dino-habit').textContent = dino.eatHabit
+        }
         
         item.querySelector('.dino-name').textContent = dino.name
         item.querySelector('.dino-name').setAttribute('title', dino.name)
         item.querySelector('.dino-name').addEventListener('keypress', this.saveOnEnter.bind(this, dino))
-        item.querySelector('.dino-habit').textContent = dino.eatHabit
         item.querySelector('.dino-habit').setAttribute('title', dino.eatHabit)
         item.querySelector('.dino-habit').addEventListener('keypress', this.saveOnEnter.bind(this, dino))
         item.querySelector('button.remove').addEventListener('click', this.deleteEntry.bind(this))
