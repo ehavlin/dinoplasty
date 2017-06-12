@@ -77,25 +77,38 @@ const app = {
 
             btn.textContent = 'Save'
         }
-
-
     },
 
     moveUp(dino, event){
-        let listItem = event.target.parentNode.parentNode
-        if (listItem.previousSibling){
-            listItem.parentNode.insertBefore(listItem, listItem.previousSibling) 
-        
+        const listItem = event.target.closest('.dino')
+
         const index = this.dinos.findIndex((currentDino, i) => {
             return currentDino.id === dino.id
         })
 
-        const previousDino = this.dinos[index - 1]
-        this.dinos[index - 1] = dino
-        this.dinos[index] = previousDino
+        if (index > 0){
+            this.list.insertBefore(listItem, listItem.previousElementSibling)
 
-        this.save()
+            const previousDino = this.dinos[index - 1]
+            this.dinos[index - 1] = dino
+            this.dinos[index] = previousDino
+            
+            this.save()
         }
+        // let listItem = event.target.parentNode.parentNode
+        // if (listItem.previousSibling){
+        //     listItem.parentNode.insertBefore(listItem, listItem.previousSibling) 
+        
+        // const index = this.dinos.findIndex((currentDino, i) => {
+        //     return currentDino.id === dino.id
+        // })
+
+        // const previousDino = this.dinos[index - 1]
+        // this.dinos[index - 1] = dino
+        // this.dinos[index] = previousDino
+
+        // this.save()
+        // }
     },
 
     moveDown(dino, event){
