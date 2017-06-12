@@ -1,5 +1,5 @@
-const app = {
-    init(selectors){
+class App {
+    constructor(selectors){
         this.dinos = []
         this.max = 0
         this.list = document
@@ -10,7 +10,7 @@ const app = {
             .querySelector(selectors.formSelector)
             .addEventListener('submit', this.addDinoFromForm.bind(this))           
         this.load()
-    },
+    }
 
     load() {
         const dinoJSON = localStorage.getItem('dinos')
@@ -18,11 +18,11 @@ const app = {
         if (dinoArray){
             dinoArray.reverse().map(this.addDino.bind(this))
         }  
-    },
+    }
 
     save() {
         localStorage.setItem('dinos', JSON.stringify(this.dinos))
-    },
+    }
 
     markFavorite(dino, event){
         const listItem = event.target.closest('.dino')
@@ -37,7 +37,7 @@ const app = {
         }
 
         this.save()
-    },
+    }
 
     deleteEntry(event) {
         const listItem = event.target.closest('.dino')
@@ -52,7 +52,7 @@ const app = {
         }
 
         this.save()
-    },
+    }
 
     editEntry(dino, event) {
         const item = event.target.closest('.dino')
@@ -85,7 +85,7 @@ const app = {
 
             
         }
-    },
+    }
 
     moveUp(dino, event){
         const listItem = event.target.closest('.dino')
@@ -103,7 +103,7 @@ const app = {
 
             this.save()
         }
-    },
+    }
 
     moveDown(dino, event){
         const listItem = event.target.closest('.dino')
@@ -121,13 +121,13 @@ const app = {
 
             this.save()
         }
-    },
+    }
 
     saveOnEnter(dino, event){
         if (event.key === 'Enter'){
             this.editEntry(dino, event)
         }
-    },
+    }
     
     addDino(dino) {
         const listItem = this.renderListItem(dino)
@@ -139,7 +139,7 @@ const app = {
 
         if (dino.id > this.max)
             this.max = dino.id
-    },
+    }
 
     addDinoFromForm(event) {
         event.preventDefault()
@@ -153,7 +153,7 @@ const app = {
         this.addDino(dino)
 
         event.target.reset()
-    },
+    }
 
     renderListItem(dino) {     
         const item = this.template.cloneNode(true)
@@ -165,8 +165,11 @@ const app = {
         }
         
         item.querySelector('.dino-name').textContent = dino.name
+        item.querySelector('.dino-name').setAttribute('title', dino.name)
         item.querySelector('.dino-name').addEventListener('keypress', this.saveOnEnter.bind(this, dino))
         item.querySelector('.dino-habit').textContent = dino.eatHabit
+        item.querySelector('.dino-habit').setAttribute('title', dino.eatHabit)
+        item.querySelector('.dino-habit').addEventListener('keypress', this.saveOnEnter.bind(this, dino))
         item.querySelector('button.remove').addEventListener('click', this.deleteEntry.bind(this))
         item.querySelector('button.fav').addEventListener('click', this.markFavorite.bind(this, dino))
         item.querySelector('button.up').addEventListener('click', this.moveUp.bind(this, dino))
@@ -174,11 +177,10 @@ const app = {
         item.querySelector('button.edit').addEventListener('click', this.editEntry.bind(this, dino))
 
         return item
-    },
-
+    }
 }
 
-app.init({
+const app = new App({
     formSelector: '#dino-form',
     listSelector: '#dino-list',
     templateSelector: '.dino.template',

@@ -29,12 +29,17 @@
 .dino-name {
     flex-grow: 1;
     margin-right: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .dino-habit {
     flex-grow: 1;
     font-style: italic;
-    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif
+    font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 
 .input-group-field {
@@ -48,6 +53,7 @@
 
 .actions.button-group {
     margin-bottom: 0;
+    white-space: nowrap;
 }
 
 .dino.fav {
@@ -62,6 +68,10 @@
 
 .input-group-button .button {
     color: white;
+}
+
+.actions .button {
+    padding: 0.65em 0.8em;
 }
 
 h1 {
