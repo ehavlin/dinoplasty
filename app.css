@@ -1,4 +1,4 @@
-.template {
+.dino.template {
     display: none;
 }
 
@@ -7,7 +7,26 @@
 }
 
 .dino {
-    clear: both;
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    border: 2px solid black;
+}
+
+.dino + .dino {
+    border-top: none;
+}
+
+.dino:nth-of-type(odd){
+    background-color: whitesmoke
+}
+
+.dino:nth-of-type(even) {
+    background-color: lightgreen;
+}
+
+.dino-name {
+    flex-grow: 1;
 }
 
 .dino-habit {
@@ -25,17 +44,8 @@
     transition-duration: 0.5s;
 }
 
-li {
-    border: 2px solid black;
-    padding: 1rem 5px
-}
-
-li:nth-of-type(odd){
-    background-color: whitesmoke
-}
-
-li:nth-of-type(even) {
-    background-color: lightgreen;
+.actions.button-group {
+    margin-bottom: 0;
 }
 
 h1 {
