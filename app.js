@@ -59,7 +59,7 @@ const app = {
         const name = item.querySelector('.dino-name')
         const habit = item.querySelector('.dino-habit')
 
-        const btn = event.currentTarget
+        const btn = item.querySelector('.edit.button')
         const icon = btn.querySelector('i.fa')
         
         if (name.isContentEditable){
@@ -122,6 +122,12 @@ const app = {
             this.save()
         }
     },
+
+    saveOnEnter(dino, event){
+        if (event.key === 'Enter'){
+            this.editEntry(dino, event)
+        }
+    },
     
     addDino(dino) {
         const listItem = this.renderListItem(dino)
@@ -159,6 +165,7 @@ const app = {
         }
         
         item.querySelector('.dino-name').textContent = dino.name
+        item.querySelector('.dino-name').addEventListener('keypress', this.saveOnEnter.bind(this, dino))
         item.querySelector('.dino-habit').textContent = dino.eatHabit
         item.querySelector('button.remove').addEventListener('click', this.deleteEntry.bind(this))
         item.querySelector('button.fav').addEventListener('click', this.markFavorite.bind(this, dino))
