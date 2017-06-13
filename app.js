@@ -49,6 +49,8 @@ class App {
         }
 
         this.save()
+
+        location.reload()
     }
 
     editEntry(dino, event) {
@@ -71,6 +73,8 @@ class App {
             dino.eatHabit = habit.textContent
 
             this.save()
+
+            location.reload()
         }
         else {
             name.contentEditable = true
