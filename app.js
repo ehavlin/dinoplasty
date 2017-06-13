@@ -5,7 +5,7 @@ class App {
         this.list = document.querySelector(selectors.listSelector)
         this.template = document.querySelector(selectors.templateSelector)
         document.querySelector(selectors.formSelector).addEventListener('submit', this.addDinoFromForm.bind(this))
-        this.category = document.querySelector(selectors.categorySelector)           
+        this.category = document.querySelector(selectors.categorySelector) 
         this.load()
     }
 
@@ -154,16 +154,11 @@ class App {
 
     categorizeDino(dino){
         const categories = this.category
-
         if (dino.eatHabit === 'Carnivore'){
             const div = categories.querySelector('#dino-carnivore')
             const item = document.createElement('li')
             item.textContent = dino.name
             div.appendChild(item)
-            // const carn = categories.querySelector('.dino.carnivore')
-            // const item = document.createElement('span')
-            // item.textContent = dino.name
-            // carn.appendChild(item)
         }
         else if (dino.eatHabit === 'Herbivore') {
             const div = categories.querySelector('#dino-herbivore')
