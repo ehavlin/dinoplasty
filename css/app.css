@@ -74,6 +74,18 @@
     padding: 0.65em 0.8em;
 }
 
+#dino-category span {
+    font-size: 80%;
+    padding-left: 1rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+#dino-category div {
+    border: 1px solid black;
+}
+
+
 h1 {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
 }

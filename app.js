@@ -156,22 +156,26 @@ class App {
         const categories = this.category
 
         if (dino.eatHabit === 'Carnivore'){
-            const carn = categories.querySelector('.dino.carnivore')
-            const item = document.createElement('span')
+            const div = categories.querySelector('#dino-carnivore')
+            const item = document.createElement('li')
             item.textContent = dino.name
-            carn.appendChild(item)
+            div.appendChild(item)
+            // const carn = categories.querySelector('.dino.carnivore')
+            // const item = document.createElement('span')
+            // item.textContent = dino.name
+            // carn.appendChild(item)
         }
         else if (dino.eatHabit === 'Herbivore') {
-            const herb = categories.querySelector('.dino.herbivore')
-            const item = document.createElement('span')
+            const div = categories.querySelector('#dino-herbivore')
+            const item = document.createElement('li')
             item.textContent = dino.name
-            herb.appendChild(item)
+            div.appendChild(item)
         }
         else if (dino.eatHabit === 'Omnivore') {
-            const omni = categories.querySelector('.dino.omnivore')
-            const item = document.createElement('span')
+            const div = categories.querySelector('#dino-omnivore')
+            const item = document.createElement('li')
             item.textContent = dino.name
-            omni.appendChild(item)
+            div.appendChild(item)
         }
     }
 
