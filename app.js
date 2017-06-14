@@ -49,8 +49,6 @@ class App {
         }
 
         this.save()
-
-        location.reload()
     }
 
     editEntry(dino, event) {
@@ -73,8 +71,6 @@ class App {
             dino.eatHabit = habit.textContent
 
             this.save()
-
-            location.reload()
         }
         else {
             name.contentEditable = true
@@ -156,28 +152,6 @@ class App {
         event.target.reset()
     }
 
-    categorizeDino(dino){
-        const categories = this.category
-        if (dino.eatHabit === 'Carnivore'){
-            const div = categories.querySelector('#dino-carnivore')
-            const item = document.createElement('li')
-            item.textContent = dino.name
-            div.appendChild(item)
-        }
-        else if (dino.eatHabit === 'Herbivore') {
-            const div = categories.querySelector('#dino-herbivore')
-            const item = document.createElement('li')
-            item.textContent = dino.name
-            div.appendChild(item)
-        }
-        else if (dino.eatHabit === 'Omnivore') {
-            const div = categories.querySelector('#dino-omnivore')
-            const item = document.createElement('li')
-            item.textContent = dino.name
-            div.appendChild(item)
-        }
-    }
-
     renderListItem(dino) {     
         const item = this.template.cloneNode(true)
         item.classList.remove('template')
@@ -190,8 +164,6 @@ class App {
         if (dino.eatHabit) {
             item.querySelector('.dino-habit').textContent = dino.eatHabit
         }
-
-        this.categorizeDino(dino)
 
         item.querySelector('.dino-name').textContent = dino.name
         item.querySelector('.dino-name').setAttribute('title', dino.name)
